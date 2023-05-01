@@ -12,8 +12,14 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const user = this.accountService.userValue;
+        console.warn(user?.isAdmin);
+        console.warn(route.data.isAdmin)
         if (user) {
-            // authorised so return true
+            if(route.data.isAdmin && !user?.isAdmin){
+                 this.router.navigate(['/']);
+                return false;
+               
+            }
             return true;
         }
 
@@ -21,4 +27,17 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url }});
         return false;
     }
+
+    // canActivateAdmin(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    //     const user = this.accountService.userValue;
+    //     console.warn(user);
+    //     if (user?.isAdmin) {
+    //         // authorised so return true
+    //         return true;
+    //     }
+
+    //     // not logged in so redirect to login page with the return url
+    //     this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url }});
+    //     return false;
+    // }
 }

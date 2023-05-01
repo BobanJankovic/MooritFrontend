@@ -1,0 +1,101 @@
+.text-center {
+    margin: 0;
+    margin-bottom: 15px;
+  }
+  
+  .header {
+    background-color: azure;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .map-container {
+    height: calc(100vh - 58px);
+  }
+  
+  .homePage {
+    position: relative;
+  }
+  
+  .datePicker {
+    position: absolute;
+    top: 15px;
+    right: 270px;
+    border-radius: 4px;
+    z-index: 999;
+    padding: 15px;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid darkgrey;
+    box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+  }
+
+  .select-location {
+    position: absolute;
+    border-radius: 4px;
+    z-index: 999;
+    padding: 15px;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid darkgrey;
+    box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    top:245px;
+    right: 15px;
+  }
+  
+  .filter-container {
+    position: absolute;
+    top:15px;
+    right: 15px;
+    border-radius: 4px;
+    z-index: 999;
+    padding: 15px;
+    background-color: lightgoldenrodyellow;
+    border: 2px solid darkgrey;
+    box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    -webkit-box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+    -moz-box-shadow: 4px 7px 11px 3px rgba(0,0,0,0.29);
+  }
+
+  .available-wrapper, .expires-wrapper, .occupied-wrapper {
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding: 2px;
+  }
+  
+  .available-wrapper > label {
+    background-color: lightgreen;
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .expires-wrapper > label {
+    background-color: rgb(252, 252, 122);
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  
+  }
+
+  .occupied-wrapper > label {
+    background-color: lightcoral;
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  input {
+    margin-right: 10px;
+  }

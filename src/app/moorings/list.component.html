@@ -1,0 +1,32 @@
+﻿<h1>Moorings List dixy</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Mooring</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Name</th>
+            <th style="width: 30%">Length</th>
+            <th style="width: 30%">Width</th>
+            <th style="width: 10%">Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mooring of moorings">
+            <td>{{mooring.name}}</td>
+            <td>{{mooring.length}}</td>
+            <td>{{mooring.width}}</td>
+            <!-- <td>{{mooring.location.name}}</td> -->
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{mooring.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                <button (click)="deleteMooring(mooring.id)" class="btn btn-sm btn-danger btn-delete-user"  [disabled]="mooring.isDeleting">
+                    <span *ngIf="mooring.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!mooring.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!moorings">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

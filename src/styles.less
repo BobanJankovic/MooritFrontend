@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~leaflet/dist/leaflet.css";
+
+/* You can add global styles to this file, and also import other style files */
 .app-container {
     min-height: 320px;
     overflow: hidden;
@@ -8,4 +11,36 @@
     width: 40px;
     text-align: center;
     box-sizing: content-box;
+}
+
+label {
+    display: block;
+}
+
+
+
+.datePicker-end {
+    display: flex;
+    flex-direction: column;
+}
+
+.datePicker {
+    display: flex;
+    flex-direction: row;
+}
+
+.datePicker:first-child {
+    margin-right: 10px;
+}
+
+.datePicker {
+    label {
+        margin-bottom: 2px;
+    }
+}
+
+.select-location {
+    label {
+        margin-bottom: 2px;
+    }
 }

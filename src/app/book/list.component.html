@@ -1,0 +1,35 @@
+﻿<h1>Locations</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Location</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Id</th>
+            <th style="width: 30%">Name</th>
+            <th style="width: 30%">Latitude</th>
+            <th style="width: 10%">Longitude</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locations">
+            <td>{{location.id}}</td>
+            <td>{{location.name}}</td>
+            <td>{{location.latitude}}</td>
+            <td>{{location.longitude}}</td>
+   
+            <!-- <td>{{user.lastName}}</td>
+            <td>{{user.username}}</td> -->
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{location.id}}" class="btn btn-sm btn-primary me-1">Edit Location</a>
+                <button (click)="deleteLocation(location.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="isDeleting"> 
+                    <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!locations">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center">whattt???</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

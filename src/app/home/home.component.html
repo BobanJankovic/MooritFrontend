@@ -1,7 +1,83 @@
-﻿<div class="p-4">
-    <div class="container">
-        <h1>Hi {{user?.firstName}}!</h1>
-        <p>You're logged in with Angular 14!!</p>
-        <p><a routerLink="/users">Manage Users</a></p>
+﻿
+    <div class="homePage">
+      <div
+        class="map-container"
+        leaflet
+        [leafletOptions]="options"
+        (leafletMapReady)="onMapReady($event)"
+        (leafletClick)="mapClicked($event)"
+      >
+      </div>
+
+    <div class="select-location">
+      <label for="cars" >Select Location:</label>
+      <select name="locations" id="locations">
+        <option value="pula">Pula</option>
+        <option value="cres">Cres</option>
+        <option value="pag">Pag</option>
+        <option value="rab">Rab</option>
+        <option value="zadar">Zadar</option>
+      </select>
     </div>
-</div>
+
+    <div class="datePicker">
+      <div clas="datePicker-start">
+        <label for="startDate" >Booking start time:</label>
+        <input
+          step="1800"
+          type="datetime-local"
+          id="startDate"
+          name="startDate"
+          placeholder="yyyy-MM-ddTHH:mm"
+      
+          [(ngModel)]="startDate"
+          [min]="minStartTime"
+          (ngModelChange)="setStartDate()"
+        />
+      </div>
+      <div clas="datePicker-end">
+        <label for="endDate" >Booking end time:</label>
+        <input
+          step="1800"
+          type="datetime-local"
+          id="endDate"
+          placeholder="yyyy-MM-ddTHH:mm"
+          name="endDate"
+          [(ngModel)]="endDate"
+          [min]="minEndTime"
+          (ngModelChange)="setEndDate()"
+        />
+      </div>
+    </div>
+
+      <div class="filter-container">
+        <h6 >Boat moorings</h6>
+        <div  [ngStyle]=" {'border': isAvailable ? '2px solid black' : '2px solid transparent'}" class="available-wrapper">
+          <label for="setAvailableCheckBox" >Available</label>
+          <input #setAvailableCheckBox
+            hidden
+            id="setAvailableCheckBox" 
+            type="checkbox" 
+            [checked]="isAvailable" 
+            (change)="onSetAvailable(setAvailableCheckBox.checked)" />
+        </div>
+        <div  [ngStyle]=" {'border': isExpires ? '2px solid black' : '2px solid transparent'}" class="expires-wrapper">
+          <label for="setExpiresCheckBox" >Available for a limited time</label>
+          <input #setExpiresCheckBox
+            id="setExpiresCheckBox" 
+            type="checkbox"  
+            hidden   
+            [checked]="isExpires" 
+            (change)="onSetExpires(setExpiresCheckBox.checked)" />
+        </div>
+        <div  [ngStyle]=" {'border': isOccupied ? '2px solid black' : '2px solid transparent'}" class="occupied-wrapper">
+          <label for="setOccupiedCheckBox" >Occupied</label>
+          <input #setOccupiedCheckBox
+            id="setOccupiedCheckBox" 
+            type="checkbox" 
+            hidden
+            [checked]="isOccupied" 
+            (change)="onSetOccupied(setOccupiedCheckBox.checked)" />
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,40 @@
+﻿
+<!-- <a routerLink="add" class="btn btn-sm btn-success mb-2">Add Mooring</a> -->
+<div class="p-4">
+    <div class="container">
+        <h1>Bookings</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 30%">id</th>
+                    <th style="width: 30%">start date</th>
+                    <th style="width: 30%">end date</th>
+                    <th style="width: 10%">price</th>
+                    <th style="width: 10%">user</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let booking of bookings">
+                    <td>{{booking.id}}</td>
+                    <td>{{booking.startDate}}</td>
+                    <td>{{booking.endDate}}</td>
+                    <td>{{booking.price}}</td>
+                    <td>{{booking.user.firstName}}</td>
+
+                    <td style="white-space: nowrap">
+                        <!-- <a routerLink="edit/{{booking.id}}" class="btn btn-sm btn-primary me-1">Edit</a> -->
+                        <button (click)="deleteMooring(booking.id)" class="btn btn-sm btn-danger btn-delete-user"  [disabled]="isDeleting">
+                            <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
+                            <span *ngIf="!isDeleting">Delete</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="!bookings">
+                    <td colspan="4" class="text-center">
+                        <span class="spinner-border spinner-border-lg align-center"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

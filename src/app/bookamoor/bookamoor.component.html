@@ -1,0 +1,56 @@
+﻿<div class="p-4">
+    <div class="container">
+        <h1>{{title}}</h1>
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="mb-3 col">
+                    <label class="form-label">Start date and time</label>
+                    <input [readonly]="true" type="datetime-local" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+                    <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.startDate.errors.required">Start date is required</div>
+                    </div>
+                </div>
+                <div class="mb-3 col">
+                    <label class="form-label">Start date and time</label>
+                    <input [readonly]="true" type="datetime-local" formControlName="endDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
+                    <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                        <div *ngIf="f.endDate.errors.required">End date is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col">
+                    <label class="form-label">Price</label>
+                    <input [readonly]="true"  type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+                    <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                        <div *ngIf="f.price.errors.required">Price is required</div>
+                    </div>
+                </div>
+                <div class="mb-3 col">
+                    <label class="form-label">User</label>
+                    <input [readonly]="true" type="text" formControlName="applicationUserModelId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.applicationUserModelId.errors }" />
+                    <div *ngIf="submitted && f.applicationUserModelId.errors" class="invalid-feedback">
+                        <div *ngIf="f.applicationUserModelId.errors.required">User is required</div>
+                    </div>
+                </div>
+                <div class="mb-3 col">
+                    <label class="form-label">Mooring</label>
+                    <input [readonly]="true" type="text" formControlName="mooringId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mooringId.errors }" />
+                    <div *ngIf="submitted && f.mooringId.errors" class="invalid-feedback">
+                        <div *ngIf="f.mooringId.errors.required">Mooring is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button [disabled]="submitting" class="btn btn-primary">
+                    <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+                    Save
+                </button>
+                <a href="/" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+        <div *ngIf="loading" class="text-center m-5">
+            <span class="spinner-border spinner-border-lg align-center"></span>
+        </div>
+    </div>
+</div>

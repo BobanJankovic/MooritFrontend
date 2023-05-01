@@ -1,0 +1,97 @@
+﻿<h1>{{title}}</h1>
+<form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+        </div>
+        <div class="mb-3 col">
+            <label class="form-label">Length</label>
+            <input type="number" formControlName="length" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.length.errors }" />
+            <div *ngIf="submitted && f.length.errors" class="invalid-feedback">
+                <div *ngIf="f.length.errors.required">Length is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Width</label>
+            <input type="number" formControlName="width" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.width.errors }" />
+            <div *ngIf="submitted && f.width.errors" class="invalid-feedback">
+                <div *ngIf="f.width.errors.required">Width is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Latitude</label>
+            <input type="number" formControlName="latitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }" />
+            <div *ngIf="submitted && f.latitude.errors" class="invalid-feedback">
+                <div *ngIf="f.latitude.errors.required">Latitude is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Longitude</label>
+            <input type="number" formControlName="longitude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }" />
+            <div *ngIf="submitted && f.longitude.errors" class="invalid-feedback">
+                <div *ngIf="f.longitude.errors.required">Longitude is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Price</label>
+            <input type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
+            <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                <div *ngIf="f.price.errors.required">Price is required</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="mb-3 col">
+            <label class="form-label">Location</label>
+
+            <select
+            [ngClass]="{ 'is-invalid': submitted && f.locationId.errors }"
+            class="custom-select mb-3"
+            (change)="changeLocation($event)"
+            formControlName="locationId"
+          >
+            <option value="">Choose Location X</option>
+            <option *ngFor="let location of locations" [value]="location.id" >
+              {{ location.name }}
+            </option>
+          </select>
+
+            <!-- <input type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" /> -->
+            <div *ngIf="submitted && f.locationId.errors" class="invalid-feedback">
+                <div *ngIf="f.locationId.errors.required">Location is required</div>
+            </div>
+        </div>
+    </div>
+
+
+  
+        <!-- error block -->
+        <!-- <div class="invalid-feedback" *ngIf="isSubmitted && cityName?.invalid">
+          <sup>*</sup>Please provide city name
+        </div> -->
+
+
+    <div class="mb-3">
+        <button [disabled]="submitting" class="btn btn-primary">
+            <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+            Save
+        </button>
+        <a routerLink="/moorings" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+<div *ngIf="loading" class="text-center m-5">
+    <span class="spinner-border spinner-border-lg align-center"></span>
+</div>

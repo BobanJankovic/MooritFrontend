@@ -1,0 +1,33 @@
+﻿<h1>Bookings</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add booking</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Start Date</th>
+            <th style="width: 30%">End Date</th>
+            <th style="width: 30%">Price</th>
+            <th style="width: 10%">Mooring name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let booking of bookings">
+            <td>{{booking.startDate}}</td>
+            <td>{{booking.endDate}}</td>
+            <td>{{booking.price}}</td>
+            <td>{{booking.mooring.name}}</td>
+            <td>{{booking.mooring.location.name}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{booking.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                <button (click)="deleteBooking(booking.id)" class="btn btn-sm btn-danger btn-delete-user"  [disabled]="isDeleting">
+                    <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!bookings">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
